@@ -1,30 +1,15 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
+import express from "express";
+import bookRoutes from "./routes";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
+const app = express();
+const PORT = 3000;
 
-async function main() {
-    const user = await prisma.user.create({
-        
-        data: {
-            name: "alice",
-            email: "esse@esse.io"
-        }
-    })
+app.use(express.json());
 
-    console.log('user: ', user);
-}
-
-
-const express = require("express")
-
-const app = express()
-
-const PORT= 3000
+app.use("/books", bookRoutes);
 
 app.listen(PORT, () => {
-    console.log("rodou")
-})
-
-app.get("/taltaltal", (request: any, response: any) => {
-    response.json({name: "taltaltal", })
-})
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
