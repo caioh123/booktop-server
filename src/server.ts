@@ -14,12 +14,6 @@ async function main() {
     console.log('user: ', user);
 }
 
-main().then(async() => {
-    await prisma.$disconnect()
-}).catch(async (e) => {
-    await prisma.$disconnect()
-    process.exit(1)
-})
 
 const express = require("express")
 
