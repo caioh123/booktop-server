@@ -9,9 +9,11 @@ class BookController {
   public async getAllBooks(req: Request, res:Response): Promise<Response> {
     try {
       const name = String(req.query.name)
+      const price = Number(req.query.price)
       const books = await prisma.book.findMany({
         where: {
-          name: {startsWith: name }
+          name: {startsWith: name },
+          price: {gte: price}
         }
       })
 
