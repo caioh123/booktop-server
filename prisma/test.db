@@ -1,0 +1,13 @@
+{
+  "development": {
+    "datasource": {
+      "url": "mysql://user:password@localhost:3306/mydatabase"
+    }
+  },
+  "test": {
+    "datasource": {
+      "provider": "sqlite",
+      "url": "file:./prisma/test.db"
+    }
+  }
+}
